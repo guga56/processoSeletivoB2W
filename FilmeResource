@@ -1,0 +1,51 @@
+package br.com.b2w.resources;
+
+import java.util.ArrayList;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+
+import br.com.b2w.control.Controle;
+import br.com.b2w.dal.FilmeDao;
+import br.com.b2w.model.Filme;
+
+@Path("/filme")
+public class FilmeResource {
+	
+	@GET
+	@Path("/listarTodos")
+	@Produces("application/xml")
+	public ArrayList<Filme> listarTodos(){
+		return new Controle().listarTodos();
+	}
+	
+	@GET
+	@Path("/criarNovo")
+	@Produces("Application")
+	public void criarNovo(Filme filme){
+	    new FilmeDao().criarNovo(filme);
+	}
+	
+	
+	@GET
+	@Path("/findByCod")
+	@Produces("application/xml")
+	public Filme findByCod(int cod){
+		return new FilmeDao().findByCod(cod);
+	}
+	
+	@GET
+	@Path("/delete")
+	@Produces("application/xml")
+	public void delete(Filme f){
+		new FilmeDao().delete(f);
+	}
+	
+	@GET
+	@Path("/update")
+	@Produces("application/xml")
+	public void update(Filme f){
+		new FilmeDao().update(f);
+	}
+}
