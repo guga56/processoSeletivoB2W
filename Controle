@@ -1,0 +1,13 @@
+package br.com.b2w.control;
+
+import java.util.ArrayList;
+
+import br.com.b2w.dal.FilmeDao;
+import br.com.b2w.model.Filme;
+
+public class Controle {
+
+	public ArrayList<Filme> listarTodos(){
+		return FilmeDao.getInstance().listarTodos();
+	}
+}
