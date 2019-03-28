@@ -1,0 +1,42 @@
+private AcaoService acaoService = new AcaoService();
+private Acao acao = new Acao();
+
+public AcaoServiceTest(String name) {
+	super(name);
+}
+
+    // Não adicionei as configurações no setup que antes de cada método ele chama esse método assim limparia os valores
+protected void setUp() throws Exception {
+	super.setUp();
+}
+
+   // Não adicionei nada no tearDown que depois de cada método ele chama esse método assim limparia os valores
+protected void tearDown() throws Exception {
+	super.tearDown();
+}
+
+    // Testando o save
+public void testSave() throws Exception {
+	acao.setOID(null);
+	acao.setCod_acao("TESTE UNITAR");
+	acao.setCod_gru_empresa("100");
+	acao.setDes_acao("Ação de teste unitário");
+	acao.setTexto_acao("Texto ação");
+	acao.setTipo_acao(5); // Outros
+	
+	assertNotNull(acaoService.save(acao));
+}
+
+    // Aqui gostaria que utilizasse o mesmo objeto novamente, já com o OID preenchido para poder verificar que o update funcionou
+public void testUpdate() throws Exception{
+	acao.setTexto_acao("update teste unitário");
+	assertNotNull(acaoService.update(acao));
+	assertEquals("update teste unitário", acao.getTexto_acao());
+}
+
+    // Aqui testaria o remove do objeto criado
+public void testRemove() throws Exception {
+	assertEquals("true", acaoService.remove(acao));
+}
+
+   
