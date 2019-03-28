@@ -1,0 +1,15 @@
+create database restfull;
+use restfull;
+
+create table filme(
+idFilme         integer          primary key      auto_increment,
+nome            varchar(35)        not null,
+clima           varchar(35)        not null,
+terreno         varchar(35)        not null);
+
+insert into filme values(null,'jupter','fogo','aspiro');
+insert into filme values(null,'saturno','liquido','liso');
+insert into filme values(null,'merculio','seco','acabado');
+insert into filme values(null,'terra','chuvoso','molhado');
+
+select * from filme;
